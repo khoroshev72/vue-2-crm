@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     meta: {
       layout: 'main'
     },
@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     meta: {
       layout: 'auth'
     },
@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: '/register',
-    name: 'Register',
+    name: 'register',
     meta: {
       layout: 'auth'
     },
@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: '/categories',
-    name: 'Categories',
+    name: 'categories',
     meta: {
       layout: 'main'
     },
@@ -40,7 +40,7 @@ const routes = [
   },
   {
     path: '/history',
-    name: 'History',
+    name: 'history',
     meta: {
       layout: 'main'
     },
@@ -48,7 +48,7 @@ const routes = [
   },
   {
     path: '/planning',
-    name: 'Planning',
+    name: 'planning',
     meta: {
       layout: 'main'
     },
@@ -56,7 +56,7 @@ const routes = [
   },
   {
     path: '/profile',
-    name: 'Profile',
+    name: 'profile',
     meta: {
       layout: 'main'
     },
@@ -64,7 +64,7 @@ const routes = [
   },
   {
     path: '/record/:id',
-    name: 'Record',
+    name: 'record',
     meta: {
       layout: 'main'
     },
@@ -72,7 +72,7 @@ const routes = [
   },
   {
     path: '/records',
-    name: 'Records',
+    name: 'records',
     meta: {
       layout: 'main'
     },
