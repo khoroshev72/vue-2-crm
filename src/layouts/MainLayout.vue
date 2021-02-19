@@ -1,24 +1,24 @@
 <template>
-    <div>
-        <div class="app-main-layout">
+<div>
+    <div class="app-main-layout">
 
-            <navbar @toggleSidebar="isOpen=!isOpen" />
+        <navbar @toggleSidebar="isOpen=!isOpen" />
 
-            <sidebar v-model="isOpen"/>
+        <sidebar v-model="isOpen" />
 
-            <main class="app-content" :class="{ full: isOpen }">
-                <div class="app-page">
-                    <slot />
-                </div>
-            </main>
-
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large blue" href="#">
-                    <i class="large material-icons">add</i>
-                </a>
+        <main class="app-content" :class="{ full: isOpen }">
+            <div class="app-page">
+                <slot />
             </div>
+        </main>
+
+        <div class="fixed-action-btn">
+            <router-link class="btn-floating btn-large blue" href="#" :to="{ name: 'records' }">
+                <i class="large material-icons">add</i>
+            </router-link>
         </div>
     </div>
+</div>
 </template>
 
 <script>
