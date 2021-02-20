@@ -52,7 +52,8 @@ export default {
     this.interval = setInterval(() => {
       this.date = new Date()
     }, 1000)
-    this.dropdown = M.Dropdown.init(this.$refs.dropdown, {})
+    M.Dropdown.init(this.$refs.dropdown, {})
+    this.dropdown = M.Dropdown.getInstance(this.$refs.dropdown)
   },
   beforeDestroy() {
     clearInterval(this.interval)
@@ -61,8 +62,11 @@ export default {
     }
   },
   methods: {
-    logout() {
-      this.$router.push('/login?m=logout')
+    async logout() {
+      try {
+        await this.$store.dispatch('auth/logout')
+        this.$router.push('/login?m=logout')
+      } catch (e) {}
     }
   }
 }
