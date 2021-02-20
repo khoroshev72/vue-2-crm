@@ -65,6 +65,7 @@
 
 <script>
 import { required, minLength, email } from 'vuelidate/lib/validators'
+import messages from '../utils/messages'
 
 export default {
   name: 'login',
@@ -77,6 +78,11 @@ export default {
   validations: {
       email: { required, email },
       password: { required, minLength: minLength(6)}
+  },
+  mounted() {
+    if (messages[this.$route.query.m]) {
+      this.$message(messages[this.$route.query.m])
+    }
   },
   methods: {
       submitHandler() {
