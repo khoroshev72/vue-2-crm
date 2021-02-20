@@ -13,8 +13,29 @@ Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 Vue.filter('date', dateFilter)
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
+
+firebase.initializeApp({
+  apiKey: "AIzaSyDpnXEjRI9I6Au7ksjL0YrnF2sEOL_jeGY",
+  authDomain: "vue-crm-ac7d8.firebaseapp.com",
+  databaseURL: "https://vue-crm-ac7d8-default-rtdb.firebaseio.com",
+  projectId: "vue-crm-ac7d8",
+  storageBucket: "vue-crm-ac7d8.appspot.com",
+  messagingSenderId: "302588619067",
+  appId: "1:302588619067:web:5cc00b31b67d111d0a6f1e"
+})
+
+let app
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
+
