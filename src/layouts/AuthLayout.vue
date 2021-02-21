@@ -5,8 +5,19 @@
 </template>
 
 <script>
-  export default {
+  import messages from '../utils/messages'
 
+  export default {
+    computed: {
+      error() {
+        return this.$store.getters.error
+      }
+    },
+    watch: {
+      error(val) {
+        this.$error(messages[val.code] || 'Неизвестная ошибка')
+      }
+    }
   }
 </script>
 
