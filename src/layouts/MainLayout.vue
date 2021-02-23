@@ -24,12 +24,33 @@
 <script>
 	import Navbar from '@/components/Navbar.vue'
 	import Sidebar from '@/components/Sidebar.vue'
+  import messages from '../utils/messages'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     data() {
         return {
             isOpen: false
         }
+    },
+    computed: {
+      error() {
+        return this.$store.getters.error
+      },
+      ...mapGetters('info', ['getInfo'])
+    },
+    watch: {
+      error(val) {
+        this.$error(messages[val.code] || 'Неизвестная ошибка')
+      }
+    },
+    methods: {
+      ...mapActions('info', ['fetchInfo'])
+    },
+    async mounted() {
+      if (!Object.keys(this.getInfo).length) {
+        await this.fetchInfo()
+      }
     },
     components: {Navbar, Sidebar}
   }

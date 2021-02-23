@@ -15,7 +15,7 @@
             href="#" 
             data-target="dropdown"
             ref="dropdown">
-            USER NAME
+            {{getInfo.name}}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations} from 'vuex'
 export default {
   emits: ['toggleSidebar'],
   data() {
@@ -47,6 +48,9 @@ export default {
       interval: null,
       dropdown: null
     }
+  },
+  computed: {
+    ...mapGetters('info', ['getInfo']),
   },
   mounted() {
     this.interval = setInterval(() => {
@@ -62,9 +66,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('info', ['clearInfo']),
     async logout() {
       try {
         await this.$store.dispatch('auth/logout')
+        this.clearInfo()
         this.$router.push('/login?m=logout')
       } catch (e) {}
     }
