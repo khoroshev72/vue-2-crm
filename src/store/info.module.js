@@ -23,6 +23,17 @@ export default {
         commit('setError', e, {root:true})
       }
     },
+    async updateInfo({commit, dispatch, getters}, updated) {
+      try {
+        const uid = await dispatch('auth/getUserId', null, {root: true})
+        const updatedInfo = {...getters.getInfo, ...updated}
+        await firebase.database().ref(`/users/${uid}/info`).update(updatedInfo)
+        commit('setInfo', updatedInfo)
+      } catch (e) {
+        commit('setError', e, {root: true})
+        throw e
+      }
+    },
     async fetchCurr() {
       const key = process.env.VUE_APP_FIXER
       const res = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=RUB,EUR,USD`)
