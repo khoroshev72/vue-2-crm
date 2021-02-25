@@ -3,6 +3,7 @@ import Vuelidate from 'vuelidate'
 import messagePlugin from './utils/message.plugin'
 import Loader from './components/Loader'
 import App from './App.vue'
+import tooltipDirective from './directives/tooltip.directive'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
@@ -16,6 +17,8 @@ Vue.use(messagePlugin)
 Vue.component('Loader', Loader)
 Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
+Vue.directive('tooltip', tooltipDirective)
+
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
