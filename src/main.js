@@ -4,8 +4,10 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import 'materialize-css/dist/js/materialize'
+import dateFilter from './filters/dateFilter'
 
 Vue.config.productionTip = false
+Vue.filter('dateFilter', dateFilter)
 
 new Vue({
   router,
